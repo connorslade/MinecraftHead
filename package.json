@@ -1,0 +1,13 @@
+{
+  "name": "minecraft_head",
+  "version": "1.0.0",
+  "description": "Use the Mojang API to get Player Skins",
+  "repository": "https://github.com/Basicprogrammer10/MinecraftHead",
+  "license": "GPL-3.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Sigma76"
+}
