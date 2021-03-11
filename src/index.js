@@ -12,6 +12,7 @@ module.exports = {
             })
         });
     },
+
     uuidToName: async function (uuid) {
         return new Promise(function(resolve, reject) {
             common.get(`https://sessionserver.mojang.com/session/minecraft/profile/${uuid}`, function (data) {
@@ -23,6 +24,7 @@ module.exports = {
             })
         });
     },
+
     getSkin: async function (uuid) {
         return new Promise(function(resolve, reject) {
             common.get(`https://sessionserver.mojang.com/session/minecraft/profile/${uuid}`, function (data) {

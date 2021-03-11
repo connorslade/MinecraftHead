@@ -14,6 +14,15 @@ mc.nameToUuid('sigma76').then((data) => {
 });
 ```
 
+Get Player Name from UUID
+```javascript
+mc.uuidToName('3c358264b4564bdeab1efe1023db6679').then((data) => {
+    console.log(data.name);
+}).catch((error) => {
+    console.log(error);
+});
+```
+
 Get Player Skin from PlayerName:
 ```javascript
 mc.nameToUuid('sigma76').then((data) => {
