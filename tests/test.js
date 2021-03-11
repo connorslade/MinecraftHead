@@ -3,11 +3,6 @@ const express = require('express');
 const path = require('path');
 const fs = require('fs');
 
-mc.nameToUuid('sigma76').then((data) => {
-    console.log(data.uuid);
-    mc.getSkin(data.uuid).then((uuid) => {
-        console.log(uuid);
-    }).catch((error) => {
-        console.log(error);
-    });
+mc.uuidToName('3c358264b4564bdeab1efe1023db6679').then((data) => {
+    console.log(data.name);
 });

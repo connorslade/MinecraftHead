@@ -12,7 +12,18 @@ module.exports = {
             })
         });
     },
-    getSkin: function (uuid) {
+    uuidToName: async function (uuid) {
+        return new Promise(function(resolve, reject) {
+            common.get(`https://sessionserver.mojang.com/session/minecraft/profile/${uuid}`, function (data) {
+                let json = JSON.parse(data);
+                if (!json.error){
+                    resolve({name: json.name, uuid: json.id});
+                }
+                reject(new Error("UUID not Valid"));
+            })
+        });
+    },
+    getSkin: async function (uuid) {
         return new Promise(function(resolve, reject) {
             common.get(`https://sessionserver.mojang.com/session/minecraft/profile/${uuid}`, function (data) {
                 let json = JSON.parse(data);
