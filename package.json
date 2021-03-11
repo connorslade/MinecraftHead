@@ -1,6 +1,6 @@
 {
   "name": "minecraft_head",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Use the Mojang API to get Player Skins",
   "repository": "https://github.com/Basicprogrammer10/MinecraftHead",
   "license": "GPL-3.0",
@@ -14,12 +14,5 @@
     "promise",
     "async"
   ],
-  "author": "sigma76",
-  "dependencies": {
-    "express": "^4.17.1"
-  },
-  "devDependencies": {
-    "gm": "^1.23.1",
-    "request": "^2.88.2"
-  }
+  "author": "sigma76"
 }

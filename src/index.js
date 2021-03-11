@@ -1,6 +1,4 @@
 const common = require('./common');
-const request = require('request');
-const gm = require('gm');
 
 module.exports = {
     nameToUuid: async function(playerName) {
