@@ -14,5 +14,12 @@
     "promise",
     "async"
   ],
-  "author": "sigma76"
+  "author": "sigma76",
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "gm": "^1.23.1",
+    "request": "^2.88.2"
+  }
 }

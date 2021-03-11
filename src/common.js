@@ -12,6 +12,9 @@ module.exports = {
         response.on('end', () => {
             callback(todo);
         });
-    });
-}
+    });},
+    base64Decode: function (base64) {
+        let buff = Buffer.from(base64, 'base64');
+        return  buff.toString('utf-8');
+    }
 }
