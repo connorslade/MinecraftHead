@@ -1,37 +1,62 @@
 # MinecraftHead
-🕹 NPM package to get Minecraft skins and other Minecraft API related stuff ^_^
+🕹 Simple NPM package interface to the Mojang API 
 
-### Usage
+## Install
+
+```console
+$ npm i minecraft_head
+```
+
+## Examples
+<details open>
+<br>
+
+First import the package:
+
+```javascript
+const mc = require('minecraft_head');
+```
 
 Get UUID for playerName:
 ```javascript
-const mc = require('minecraft_head');
-
-mc.nameToUuid('sigma76').then((data) => {
+mc.nameToUuid('sigma76').then(data => {
     console.log(data.uuid);
-}).catch((error) => {
-    console.log(error);
-});
+}).catch(error => console.log(error));
 ```
 
-Get Player Name from UUID
+Get Player Name from UUID:
 ```javascript
-mc.uuidToName('3c358264b4564bdeab1efe1023db6679').then((data) => {
+mc.uuidToName('3c358264b4564bdeab1efe1023db6679').then(data => {
     console.log(data.name);
-}).catch((error) => {
-    console.log(error);
-});
+}).catch(error => console.log(error));
 ```
 
 Get Player Skin from PlayerName:
 ```javascript
-mc.nameToUuid('sigma76').then((data) => {
-    mc.getSkin(data.uuid).then((uuid) => {
-        console.log(uuid);
-    }).catch((error) => {
-        console.log(error);
-    });
-}).catch((error) => {
-  console.log(error);
-});
+mc.nameToUuid('sigma76').then(uuid => {
+    mc.getSkin(uuid.uuid).then(skin => {
+        console.log(skin);
+    }).catch(error => console.log(error));
+}).catch(error => console.log(error));
+```
+
+Check if server is banned by Mojang:
+```javascript
+mc.isServerBlocked('playmc.mx').then(data => {
+    console.log(data)
+}).catch(error => console.log(error));
+```
+
+Check status of Mojang API:
+```javascript
+mc.statusCheck().then(data => {
+    console.log(data)
+}).catch(error => console.log(error));
+```
+
+Get Minecraft Sales Data:
+```javascript
+mc.stats().then(data => {
+    console.log(data)
+}).catch(error => console.log(error));
 ```
