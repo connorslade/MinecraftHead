@@ -7,6 +7,9 @@
 $ npm i minecraft_head
 ```
 
+## Documentation
+You can find Documentation [here](https://github.com/Basicprogrammer10/MinecraftHead/wiki)
+
 ## Examples
 <details open>
 <br>
@@ -17,7 +20,7 @@ First import the package:
 const mc = require('minecraft_head');
 ```
 
-Get UUID for playerName:
+Get UUID for a player name:
 ```javascript
 mc.nameToUuid('sigma76').then(data => {
     console.log(data.uuid);
@@ -31,7 +34,7 @@ mc.uuidToName('3c358264b4564bdeab1efe1023db6679').then(data => {
 }).catch(error => console.log(error));
 ```
 
-Get Player Skin from PlayerName:
+Get Player Skin from player name:
 ```javascript
 mc.nameToUuid('sigma76').then(uuid => {
     mc.getSkin(uuid.uuid).then(skin => {
@@ -60,3 +63,4 @@ mc.stats().then(data => {
     console.log(data)
 }).catch(error => console.log(error));
 ```
+
