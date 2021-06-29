@@ -1,4 +1,4 @@
-# MinecraftHead
+# MinecraftHead [![CodeFactor](https://www.codefactor.io/repository/github/basicprogrammer10/minecrafthead/badge)](https://www.codefactor.io/repository/github/basicprogrammer10/minecrafthead)
 🕹 Simple NPM package interface to the Mojang API 
 
 ## Install
