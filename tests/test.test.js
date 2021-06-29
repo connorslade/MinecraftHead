@@ -43,6 +43,9 @@ test('Check Server Block', done => {
 
 test('Get Minecraft Sales Stats', done => {
     mc.stats().then(data => {
+        expect(data.total).not.toBe(undefined)
+        expect(data.last24h).not.toBe(undefined)
+        expect(data.saleVelocityPerSeconds).not.toBe(undefined)
         done()
     }).catch(e => {done(e)});
 });
