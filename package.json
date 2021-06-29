@@ -1,12 +1,13 @@
 {
   "name": "minecraft_head",
   "version": "1.0.4",
-  "description": "Use the Mojang API to get Player Skins",
+  "description": "Simple interface to the Mojang API",
   "repository": "https://github.com/Basicprogrammer10/MinecraftHead",
   "license": "GPL-3.0",
   "main": "src/index.js",
   "scripts": {
-    "run": "node ./tests/test.js"
+    "run": "node ./tests/test.js",
+    "test": "jest"
   },
   "keywords": [
     "Minecraft",
@@ -17,5 +18,8 @@
     "Promise",
     "Async"
   ],
-  "author": "sigma76"
+  "author": "sigma76",
+  "devDependencies": {
+    "jest": "^27.0.6"
+  }
 }
