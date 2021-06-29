@@ -41,4 +41,8 @@ test('Check Server Block', done => {
     }).catch(e => {done(e)});
 });
 
-// Get Stats
+test('Get Minecraft Sales Stats', done => {
+    mc.stats().then(data => {
+        done()
+    }).catch(e => {done(e)});
+});
