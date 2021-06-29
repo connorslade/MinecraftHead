@@ -30,6 +30,7 @@ test('Get Cape', done => {
 
 test('API status check', done => {
     mc.statusCheck().then(data => {
+        expect(data).not.toBe([])
         done()
     }).catch(e => {done(e)});
 });
