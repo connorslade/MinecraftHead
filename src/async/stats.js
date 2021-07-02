@@ -5,7 +5,7 @@ const common = require('./../common');
  * @async
  * @returns {Promise<Object>} {total, last24h, saleVelocityPerSeconds}
  */
-async function stats() {
+function stats() {
     return new Promise(function (resolve, reject) {
         let keys = ["item_sold_minecraft", "prepaid_card_redeemed_minecraft"]
         common.post({metricKeys: keys}, 'api.mojang.com', 443, '/orders/statistics', function (data) {

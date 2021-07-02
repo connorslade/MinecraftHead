@@ -5,7 +5,7 @@ const common = require('./../common');
  * @async
  * @returns {Promise<Object>}
  */
-async function statusCheck() {
+function statusCheck() {
     return new Promise(function (resolve, reject) {
         common.get('https://status.mojang.com/check', function (data) {
             let json = JSON.parse(data);

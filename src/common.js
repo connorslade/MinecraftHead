@@ -52,5 +52,19 @@ module.exports = {
         shasum.update(url)
         url = shasum.digest('hex')
         return (blocked.indexOf(url) > -1)
+    },
+
+    getUuid(player_string) {
+        return new Promise(resolve => {
+            if (typeof  player_string === 'object') player_string.uuid.then(resolve)
+            else resolve(player_string)
+        })
+    },
+
+    getName(player_string) {
+        return new Promise(resolve => {
+            if (typeof  player_string === 'object') player_string.name.then(resolve)
+            else resolve(player_string)
+        })
     }
 }

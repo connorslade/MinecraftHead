@@ -4,10 +4,10 @@ const net = require('net');
 /**
  * Checks if a minecraft server url / ip is blocked
  * @async
- * @param {String} Server Url / Ip
+ * @param {String} server - Server Url / Ip
  * @returns {Promise<Boolean>} True / False
  */
-async function isServerBlocked(server) {
+ function isServerBlocked(server) {
     return new Promise(function (resolve, reject) {
         common.get('https://sessionserver.mojang.com/blockedservers', function (data) {
             let blocked = data.split('\n')

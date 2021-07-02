@@ -1,19 +1,19 @@
-const common = require('./../common');
+const common = require('../common')
 
 /**
  * Get the UUID from a minecraft player name
  * @async
- * @param {String} playerName
+ * @param {Object} player_string - Player Object or a Uuid as a string
  * @returns {Promise<Object>} {name, uuid}
  */
-async function nameToUuid(playerName) {
+function nameToUuid(player_string) {
     return new Promise(function (resolve, reject) {
-        common.get(`https://api.mojang.com/users/profiles/minecraft/${playerName}`, function (data) {
-            if (data !== "") {
+        common.getName(player_string).then(name => {
+            common.get(`https://api.mojang.com/users/profiles/minecraft/${name}`, function (data) {
+                if (data === "") reject(new Error("Player Not Found"));
                 let json = JSON.parse(data);
                 resolve({name: json.name, uuid: json.id});
-            }
-            reject(new Error("Player Not Found"));
+            })
         })
     });
 }
