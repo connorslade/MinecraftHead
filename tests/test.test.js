@@ -50,3 +50,10 @@ test('Get Minecraft Sales Stats', done => {
         done()
     }).catch(e => {done(e)});
 });
+
+test('Get Name History', done => {
+    mc.getNameHistory('be1d2795758c44a3b0b81c9dcd370560').then(data => {
+        expect(data).not.toBe({})
+        done()
+    }).catch(e => {done(e)});
+});
