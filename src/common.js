@@ -1,24 +1,34 @@
 const crypto = require('crypto')
 const https = require('https')
 
-module.exports = {
-    // Get request
-    get: function (uri, callback) {
-        https.get(uri, (response) => {
-            let todo = '';
+/**
+ * Send a Get Request
+ * @async
+ * @param uri {String} The Uri to get
+ * @returns {Promise<String>} Response
+ */
+function get(uri) {
+    return new Promise((resolve, reject) => {
+        let req = https.get(uri, (response) => {
+            let data = ''
+            response.on('data', chunk => data += chunk)
+            response.on('end', () => resolve(data))
+        })
+        req.on('error', reject)
+    })
+}
 
-            response.on('data', (chunk) => {
-                todo += chunk;
-            });
-
-            response.on('end', () => {
-                callback(todo);
-            });
-        });
-    },
-
-    // Post Request
-    post: function (data, hostname, port, path, callback) {
+/**
+ * Send a POST request
+ * @async
+ * @param data {String} Json Data
+ * @param hostname {string} Server Hostname
+ * @param port {Number} Server Port
+ * @param path {String} Resource Path
+ * @returns {Promise<String>} Response
+ */
+function post(data, hostname, port, path) {
+    return new Promise((resolve, reject) => {
         data = JSON.stringify(data)
         const options = {
             hostname: hostname,
@@ -34,37 +44,67 @@ module.exports = {
         const req = https.request(options, res => {
             let todo = '';
             res.on('data', d => todo += d)
-            res.on('end', () => callback(todo));
+            res.on('end', () => resolve(todo));
         })
+        req.on('error', reject)
         req.write(data)
         req.end()
-    },
+    })
+}
 
-    // Decode Base 64 encoded strings
-    base64Decode: function (base64) {
-        let buff = Buffer.from(base64, 'base64');
-        return buff.toString('utf-8');
-    },
+/**
+ * Decode a Base64 encoded string
+ * @param base64 {String} String to Decode
+ * @returns {string}
+ */
+function base64Decode(base64) {
+    let buff = Buffer.from(base64, 'base64');
+    return buff.toString('utf-8');
+}
 
-    // Check if a url / ip is in the server Blocklist
-    checkIfBlocked: function (url, blocked) {
-        let shasum = crypto.createHash('sha1')
-        shasum.update(url)
-        url = shasum.digest('hex')
-        return (blocked.indexOf(url) > -1)
-    },
+/**
+ * Check if a url / ip is in the server Blocklist.
+ * Not really a common function but you cant stop me!
+ * @param url {String} Url / Ip to Check
+ * @param blocked {Array<String>} Hashed Array of blocked servers
+ * @returns {boolean} True / False
+ */
+function checkIfBlocked(url, blocked) {
+    let shaSum = crypto.createHash('sha1')
+    shaSum.update(url)
+    url = shaSum.digest('hex')
+    return (blocked.indexOf(url) > -1)
+}
 
-    getUuid(player_string) {
-        return new Promise(resolve => {
-            if (typeof  player_string === 'object') player_string.uuid.then(resolve)
-            else resolve(player_string)
-        })
-    },
+/**
+ * Get The Uuid for a Player Object / Uuid String
+ * @param player_string {Object} Player Object / Uuid String
+ * @returns {Promise<String>} Uuid
+ */
+function getUuid(player_string) {
+    return new Promise(resolve => {
+        if (typeof player_string === 'object') player_string.uuid.then(resolve)
+        else resolve(player_string)
+    })
+}
 
-    getName(player_string) {
-        return new Promise(resolve => {
-            if (typeof  player_string === 'object') player_string.name.then(resolve)
-            else resolve(player_string)
-        })
-    }
+/**
+ * Get player name from a Player object / Name string
+ * @param player_string {Object} Player Object / Name String
+ * @returns {Promise<String>} Player Name
+ */
+function getName(player_string) {
+    return new Promise(resolve => {
+        if (typeof player_string === 'object') player_string.name.then(resolve)
+        else resolve(player_string)
+    })
+}
+
+module.exports = {
+    checkIfBlocked: checkIfBlocked,
+    base64Decode: base64Decode,
+    getName: getName,
+    getUuid: getUuid,
+    post: post,
+    get: get
 }

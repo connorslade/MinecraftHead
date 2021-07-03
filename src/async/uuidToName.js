@@ -9,7 +9,7 @@ const common = require('../common');
 async function uuidToName(player_string) {
     return new Promise(function (resolve, reject) {
         common.getUuid(player_string).then(uuid => {
-            common.get(`https://sessionserver.mojang.com/session/minecraft/profile/${uuid}`, function (data) {
+            common.get(`https://sessionserver.mojang.com/session/minecraft/profile/${uuid}`).then(data => {
                 let json = JSON.parse(data);
                 if (!json.error) resolve({name: json.name, uuid: json.id});
                 reject(new Error("UUID not Valid"));

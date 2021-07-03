@@ -9,7 +9,7 @@ const net = require('net');
  */
  function isServerBlocked(server) {
     return new Promise(function (resolve, reject) {
-        common.get('https://sessionserver.mojang.com/blockedservers', function (data) {
+        common.get('https://sessionserver.mojang.com/blockedservers').then(data => {
             let blocked = data.split('\n')
             let parts = server.split('.')
             let isBlocked = false

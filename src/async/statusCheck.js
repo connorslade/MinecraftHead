@@ -7,7 +7,7 @@ const common = require('./../common');
  */
 function statusCheck() {
     return new Promise(function (resolve, reject) {
-        common.get('https://status.mojang.com/check', function (data) {
+        common.get('https://status.mojang.com/check').then(data => {
             let json = JSON.parse(data);
             resolve(json)
         })

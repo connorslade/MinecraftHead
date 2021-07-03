@@ -34,3 +34,10 @@ test('Get Name History', done => {
         done()
     }).catch(e => {done(e)});
 });
+
+test('Get Name History at Time', done => {
+    mc.getNameAtDate('be1d2795758c44a3b0b81c9dcd370560', new Date(2015, 5, 1)).then(data => {
+        expect(data).toBe('NoWeDont')
+        done()
+    }).catch(e => {done(e)});
+});

@@ -9,7 +9,7 @@ const common = require('../common');
 function getSkin(uuid_player) {
     return new Promise(function (resolve, reject) {
         common.getUuid(uuid_player).then(uuid => {
-            common.get(`https://sessionserver.mojang.com/session/minecraft/profile/${uuid}`, function (data) {
+            common.get(`https://sessionserver.mojang.com/session/minecraft/profile/${uuid}`).then(data => {
                 let json = JSON.parse(data);
                 if (json.properties) {
                     let properties = JSON.parse(common.base64Decode(json.properties[0].value));

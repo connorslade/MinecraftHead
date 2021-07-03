@@ -1,6 +1,6 @@
 {
   "name": "minecraft_head",
-  "version": "1.2.1",
+  "version": "1.2.2",
   "description": "Simple interface to the Mojang API",
   "repository": "https://github.com/Basicprogrammer10/MinecraftHead",
   "license": "GPL-3.0",
