@@ -20,7 +20,7 @@ jobs:
           git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}
           git commit -am "💎 Automated Code Formatting"
           git push origin HEAD:master
-          
+
   RunTests:
     name: Run Unit Tests with Jest
     runs-on: ubuntu-latest
