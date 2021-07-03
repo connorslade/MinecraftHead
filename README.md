@@ -1,4 +1,4 @@
-# MinecraftHead [![CodeFactor](https://www.codefactor.io/repository/github/basicprogrammer10/minecrafthead/badge)](https://www.codefactor.io/repository/github/basicprogrammer10/minecrafthead) ![npm](https://img.shields.io/npm/dt/minecraft_head) ![Lines of code](https://img.shields.io/tokei/lines/github/Basicprogrammer10/MinecraftHead) 
+# MinecraftHead [![CI](https://github.com/Basicprogrammer10/MinecraftHead/actions/workflows/main.yml/badge.svg)](https://github.com/Basicprogrammer10/MinecraftHead/actions/workflows/main.yml) [![CodeFactor](https://www.codefactor.io/repository/github/basicprogrammer10/minecrafthead/badge)](https://www.codefactor.io/repository/github/basicprogrammer10/minecrafthead) ![npm](https://img.shields.io/npm/dt/minecraft_head) ![Lines of code](https://img.shields.io/tokei/lines/github/Basicprogrammer10/MinecraftHead) 
 🕹 Simple NPM package interface to the Mojang API 
 
 ## Install
