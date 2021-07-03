@@ -21,6 +21,6 @@
   ],
   "author": "sigma76",
   "devDependencies": {
-    "jsdoc-to-markdown": "^7.0.1"
+    "jest": "^27.0.6"
   }
 }
