@@ -1,5 +1,5 @@
-const crypto = require('crypto')
-const https = require('https')
+const crypto = require('crypto');
+const https = require('https');
 
 /**
  * Send a Get Request
@@ -9,13 +9,13 @@ const https = require('https')
  */
 function get(uri) {
     return new Promise((resolve, reject) => {
-        let req = https.get(uri, (response) => {
-            let data = ''
-            response.on('data', chunk => data += chunk)
-            response.on('end', () => resolve(data))
-        })
-        req.on('error', reject)
-    })
+        let req = https.get(uri, response => {
+            let data = '';
+            response.on('data', chunk => (data += chunk));
+            response.on('end', () => resolve(data));
+        });
+        req.on('error', reject);
+    });
 }
 
 /**
@@ -29,7 +29,7 @@ function get(uri) {
  */
 function post(data, hostname, port, path) {
     return new Promise((resolve, reject) => {
-        data = JSON.stringify(data)
+        data = JSON.stringify(data);
         const options = {
             hostname: hostname,
             port: port,
@@ -39,17 +39,17 @@ function post(data, hostname, port, path) {
                 'Content-Type': 'application/json',
                 'Content-Length': data.length
             }
-        }
+        };
 
         const req = https.request(options, res => {
             let todo = '';
-            res.on('data', d => todo += d)
+            res.on('data', d => (todo += d));
             res.on('end', () => resolve(todo));
-        })
-        req.on('error', reject)
-        req.write(data)
-        req.end()
-    })
+        });
+        req.on('error', reject);
+        req.write(data);
+        req.end();
+    });
 }
 
 /**
@@ -70,10 +70,10 @@ function base64Decode(base64) {
  * @returns {boolean} True / False
  */
 function checkIfBlocked(url, blocked) {
-    let shaSum = crypto.createHash('sha1')
-    shaSum.update(url)
-    url = shaSum.digest('hex')
-    return (blocked.indexOf(url) > -1)
+    let shaSum = crypto.createHash('sha1');
+    shaSum.update(url);
+    url = shaSum.digest('hex');
+    return blocked.indexOf(url) > -1;
 }
 
 /**
@@ -83,9 +83,9 @@ function checkIfBlocked(url, blocked) {
  */
 function getUuid(player_string) {
     return new Promise(resolve => {
-        if (typeof player_string === 'object') player_string.uuid.then(resolve)
-        else resolve(player_string)
-    })
+        if (typeof player_string === 'object') player_string.uuid.then(resolve);
+        else resolve(player_string);
+    });
 }
 
 /**
@@ -95,9 +95,9 @@ function getUuid(player_string) {
  */
 function getName(player_string) {
     return new Promise(resolve => {
-        if (typeof player_string === 'object') player_string.name.then(resolve)
-        else resolve(player_string)
-    })
+        if (typeof player_string === 'object') player_string.name.then(resolve);
+        else resolve(player_string);
+    });
 }
 
 module.exports = {
@@ -107,4 +107,4 @@ module.exports = {
     getUuid: getUuid,
     post: post,
     get: get
-}
+};

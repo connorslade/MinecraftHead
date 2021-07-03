@@ -9,4 +9,4 @@ module.exports = {
     stats: require('./async/stats').process,
 
     player: require('./async/player').process
-}
+};

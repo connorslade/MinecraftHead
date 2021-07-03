@@ -9,18 +9,22 @@ const common = require('./../common');
 function getNameHistory(player_string) {
     return new Promise(resolve => {
         common.getUuid(player_string).then(uuid => {
-            common.get(`https://api.mojang.com/user/profiles/${uuid}/names`).then(data => {
-                data = JSON.parse(data)
-                data.forEach(e => {
-                    if (typeof e.changedToAt !== 'undefined') e.changedToAt = new Date(e.changedToAt)
-                });
-                resolve(data)
-            }).catch(err => reject(err))
-        })
+            common
+                .get(`https://api.mojang.com/user/profiles/${uuid}/names`)
+                .then(data => {
+                    data = JSON.parse(data);
+                    data.forEach(e => {
+                        if (typeof e.changedToAt !== 'undefined')
+                            e.changedToAt = new Date(e.changedToAt);
+                    });
+                    resolve(data);
+                })
+                .catch(err => reject(err));
+        });
     });
 }
 
 module.exports = {
-    name: "getNameHistory",
+    name: 'getNameHistory',
     process: getNameHistory
-}
+};

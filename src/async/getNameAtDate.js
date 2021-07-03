@@ -11,20 +11,24 @@ const common = require('../common.js');
 function getNameAtDate(player_string, date) {
     return new Promise((resolve, reject) => {
         common.getUuid(player_string).then(uuid => {
-            common.get(`https://api.mojang.com/user/profiles/${uuid}/names`).then(data => {
-                data = JSON.parse(data)
-                let name = data[0].name
-                data.forEach(e => {
-                    if (typeof e.changedToAt !== 'undefined') e.changedToAt = new Date(e.changedToAt)
-                    if (e.changedToAt <= date) name = e.name
-                });
-                resolve(name)
-            }).catch(err => reject(err))
-        })
+            common
+                .get(`https://api.mojang.com/user/profiles/${uuid}/names`)
+                .then(data => {
+                    data = JSON.parse(data);
+                    let name = data[0].name;
+                    data.forEach(e => {
+                        if (typeof e.changedToAt !== 'undefined')
+                            e.changedToAt = new Date(e.changedToAt);
+                        if (e.changedToAt <= date) name = e.name;
+                    });
+                    resolve(name);
+                })
+                .catch(err => reject(err));
+        });
     });
 }
 
 module.exports = {
-    name: "getNameAtDate",
+    name: 'getNameAtDate',
     process: getNameAtDate
-}
+};

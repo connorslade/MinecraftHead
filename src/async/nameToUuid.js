@@ -1,4 +1,4 @@
-const common = require('../common')
+const common = require('../common');
 
 /**
  * Get the UUID from a minecraft player name
@@ -9,16 +9,19 @@ const common = require('../common')
 function nameToUuid(player_string) {
     return new Promise((resolve, reject) => {
         common.getName(player_string).then(name => {
-            common.get(`https://api.mojang.com/users/profiles/minecraft/${name}`).then(data => {
-                if (data === "") reject(new Error("Player Not Found"));
-                let json = JSON.parse(data);
-                resolve({name: json.name, uuid: json.id});
-            }).catch(err => reject(err))
-        })
+            common
+                .get(`https://api.mojang.com/users/profiles/minecraft/${name}`)
+                .then(data => {
+                    if (data === '') reject(new Error('Player Not Found'));
+                    let json = JSON.parse(data);
+                    resolve({ name: json.name, uuid: json.id });
+                })
+                .catch(err => reject(err));
+        });
     });
 }
 
 module.exports = {
-    name: "nameToUuid",
+    name: 'nameToUuid',
     process: nameToUuid
-}
+};
