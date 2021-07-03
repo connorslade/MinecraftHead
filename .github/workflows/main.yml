@@ -6,11 +6,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: Test using Node.js
+      - name: Setup Node.js
         uses: actions/setup-node@v1
         with:
           node-version: '12'
-      - run: ls
       - run: rm package-lock.json
       - run: yarn install
       - run: yarn test
