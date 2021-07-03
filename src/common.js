@@ -63,6 +63,14 @@ function base64Decode(base64) {
 }
 
 /**
+ * Create a uuid in hex
+ * @returns {String} Hex Uuid as a string
+ */
+function uuidHex() {
+    return crypto.randomBytes(16).toString('hex');
+}
+
+/**
  * Check if a url / ip is in the server Blocklist.
  * Not really a common function but you cant stop me!
  * @param url {String} Url / Ip to Check
@@ -105,6 +113,7 @@ module.exports = {
     base64Decode: base64Decode,
     getName: getName,
     getUuid: getUuid,
+    uuidHex: uuidHex,
     post: post,
     get: get
 };
