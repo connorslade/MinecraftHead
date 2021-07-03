@@ -1,13 +1,13 @@
 name: CI
 on: [push, pull_request]
 jobs:
-  format:
+  Format:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
         with:
           ref: ${{ github.head_ref }}
-      - name: prettier
+      - name: Prettier
         run: npx prettier --write "{,!(node_modules)**}*.js"
       - name: Check for modified files
         id: git-check
@@ -21,7 +21,7 @@ jobs:
           git commit -am "💎 Automated Code Formatting"
           git push origin HEAD:master
           
-  runTests:
+  RunTests:
     name: Run Unit Tests with Jest
     runs-on: ubuntu-latest
     steps:
