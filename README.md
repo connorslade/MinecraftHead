@@ -1,4 +1,4 @@
-# MinecraftHead [![CodeFactor](https://www.codefactor.io/repository/github/basicprogrammer10/minecrafthead/badge)](https://www.codefactor.io/repository/github/basicprogrammer10/minecrafthead)
+# MinecraftHead [![CodeFactor](https://www.codefactor.io/repository/github/basicprogrammer10/minecrafthead/badge)](https://www.codefactor.io/repository/github/basicprogrammer10/minecrafthead) ![npm](https://img.shields.io/npm/dt/minecraft_head) ![Lines of code](https://img.shields.io/tokei/lines/github/Basicprogrammer10/MinecraftHead) 
 🕹 Simple NPM package interface to the Mojang API 
 
 ## Install
@@ -17,50 +17,81 @@ You can find Documentation [here](https://github.com/Basicprogrammer10/Minecraft
 First import the package:
 
 ```javascript
-const mc = require('minecraft_head');
+const mc = require('minecraft_head'); // Import Module
+let player = new mc.player('Sigma76'); // Create a new Player (Can use Name or Uuid)
 ```
 
-Get UUID for a player name:
+Get UUID or a player:
 ```javascript
-mc.nameToUuid('sigma76').then(data => {
+// Will take Player Object or player name as a string
+mc.nameToUuid(player).then(data => {
     console.log(data.uuid);
-}).catch(error => console.log(error));
+}).catch(console.log);
+
+// Another way if using player Object
+player.uuid.then(uuid => {
+    console.log(uuid);
+})
 ```
 
-Get Player Name from UUID:
+Get Player Name:
 ```javascript
-mc.uuidToName('3c358264b4564bdeab1efe1023db6679').then(data => {
+// Will take player Object or Uuid as a string
+mc.uuidToName(player).then(data => {
     console.log(data.name);
-}).catch(error => console.log(error));
+}).catch(console.log);
+
+// Another way if using player Object
+player.name.then(name => {
+    console.log(name);
+})
 ```
 
-Get Player Skin from player name:
+Get full name history of a player:
 ```javascript
-mc.nameToUuid('sigma76').then(uuid => {
-    mc.getSkin(uuid.uuid).then(skin => {
-        console.log(skin);
-    }).catch(error => console.log(error));
-}).catch(error => console.log(error));
+// Will take Player Object or Uuid as a string
+mc.getNameHistory(player).then(data => {
+    console.log(data);
+}).catch(console.log);
+```
+
+Get a player's name at a specific time:
+```javascript
+// Will take Player Object or Uuid as a string
+// Also takes a Date Object
+// Due to API limitations anything before the first name change will be the accounts original name.
+mc.getNameAtDate(player, new Date('2017-01-01')).then(name => {
+    console.log(name);
+}).catch(console.log);
+```
+
+Get Player Skin (and cape):
+```javascript
+// Will take Player Object or Uuid as a string
+// Before the Player Object you would need to convert a player name to Uuid yourself
+mc.getSkin(player).then(skin => {
+    console.log(skin);
+}).catch(console.log);
 ```
 
 Check if server is banned by Mojang:
 ```javascript
 mc.isServerBlocked('playmc.mx').then(data => {
-    console.log(data)
-}).catch(error => console.log(error));
+    console.log(data);
+}).catch(console.log);
 ```
 
 Check status of Mojang API:
 ```javascript
 mc.statusCheck().then(data => {
-    console.log(data)
-}).catch(error => console.log(error));
+    console.log(data);
+}).catch(console.log);
 ```
 
 Get Minecraft Sales Data:
 ```javascript
 mc.stats().then(data => {
-    console.log(data)
-}).catch(error => console.log(error));
+    console.log(data);
+}).catch(console.log);
 ```
 
