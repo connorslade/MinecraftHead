@@ -7,7 +7,7 @@ const common = require('./../common');
  * @returns {Promise<Object>} An Object containing names and the date they were set
  */
 function getNameHistory(player_string) {
-    return new Promise(function (resolve, reject) {
+    return new Promise(resolve => {
         common.getUuid(player_string).then(uuid => {
             common.get(`https://api.mojang.com/user/profiles/${uuid}/names`).then(data => {
                 data = JSON.parse(data)
@@ -15,7 +15,7 @@ function getNameHistory(player_string) {
                     if (typeof e.changedToAt !== 'undefined') e.changedToAt = new Date(e.changedToAt)
                 });
                 resolve(data)
-            })
+            }).catch(err => reject(err))
         })
     });
 }

@@ -7,13 +7,13 @@ const common = require('../common')
  * @returns {Promise<Object>} {name, uuid}
  */
 function nameToUuid(player_string) {
-    return new Promise(function (resolve, reject) {
+    return new Promise((resolve, reject) => {
         common.getName(player_string).then(name => {
             common.get(`https://api.mojang.com/users/profiles/minecraft/${name}`).then(data => {
                 if (data === "") reject(new Error("Player Not Found"));
                 let json = JSON.parse(data);
                 resolve({name: json.name, uuid: json.id});
-            })
+            }).catch(err => reject(err))
         })
     });
 }

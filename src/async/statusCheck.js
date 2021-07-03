@@ -6,11 +6,11 @@ const common = require('./../common');
  * @returns {Promise<Object>}
  */
 function statusCheck() {
-    return new Promise(function (resolve, reject) {
+    return new Promise((resolve, reject) => {
         common.get('https://status.mojang.com/check').then(data => {
             let json = JSON.parse(data);
             resolve(json)
-        })
+        }).catch(err => reject(err))
     });
 }
 

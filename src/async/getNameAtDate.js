@@ -9,7 +9,7 @@ const common = require('../common.js');
  * @returns {Promise<String>} The name in plain Text
  */
 function getNameAtDate(player_string, date) {
-    return new Promise(function (resolve, reject) {
+    return new Promise((resolve, reject) => {
         common.getUuid(player_string).then(uuid => {
             common.get(`https://api.mojang.com/user/profiles/${uuid}/names`).then(data => {
                 data = JSON.parse(data)
@@ -19,7 +19,7 @@ function getNameAtDate(player_string, date) {
                     if (e.changedToAt <= date) name = e.name
                 });
                 resolve(name)
-            })
+            }).catch(err => reject(err))
         })
     });
 }

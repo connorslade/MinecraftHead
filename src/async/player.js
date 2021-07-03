@@ -19,7 +19,7 @@ class player {
      */
     get uuid() {
         let player = this
-        return new Promise(function (resolve, reject) {
+        return new Promise((resolve, reject) => {
             if (player.UUID !== null) resolve(player.UUID)
             else nameToUuid(player.NAME).then(d => resolve(d.uuid)).catch(e => reject(e))
         })
@@ -31,7 +31,7 @@ class player {
      */
     get name() {
         let player = this
-        return new Promise(function (resolve, reject) {
+        return new Promise((resolve, reject) => {
             if (player.NAME !== null) resolve(player.NAME)
             else uuidToName(player.UUID).then(d => resolve(d.name)).catch(e => reject(e))
         })

@@ -8,7 +8,7 @@ const net = require('net');
  * @returns {Promise<Boolean>} True / False
  */
  function isServerBlocked(server) {
-    return new Promise(function (resolve, reject) {
+    return new Promise((resolve, reject) => {
         common.get('https://sessionserver.mojang.com/blockedservers').then(data => {
             let blocked = data.split('\n')
             let parts = server.split('.')
@@ -29,7 +29,7 @@ const net = require('net');
                 parts.shift()
             }
             resolve(isBlocked)
-        })
+        }).catch(err => reject(err))
     });
 }
 
