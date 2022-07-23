@@ -7,7 +7,7 @@ const common = require('./../common');
  * @returns {Promise<Object>} An Object containing names and the date they were set
  */
 function getNameHistory(player_string) {
-    return new Promise(resolve => {
+    return new Promise((resolve, reject) => {
         common.getUuid(player_string).then(uuid => {
             common
                 .get(`https://api.mojang.com/user/profiles/${uuid}/names`)
