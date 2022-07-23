@@ -19,7 +19,7 @@ function getNameHistory(player_string) {
                     });
                     resolve(data);
                 })
-                .catch(err => reject(err));
+                .catch(err => console.log(err));
         });
     });
 }
