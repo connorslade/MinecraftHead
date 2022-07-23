@@ -38,7 +38,9 @@ test('Get Skin', done => {
 test('Get Cape', done => {
     mc.getSkin(new mc.player('Sigma76'))
         .then(data => {
-            expect(data.cape).toBe(false);
+            expect(data.cape).toBe(
+                'http://textures.minecraft.net/texture/2340c0e03dd24a11b15a8b33c2a7e9e32abb2051b2481d0ba7defd635ca7a933'
+            );
             done();
         })
         .catch(e => {
