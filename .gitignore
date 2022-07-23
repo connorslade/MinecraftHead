@@ -106,4 +106,4 @@ dist
 #Idea
 .idea/
 
-tests/thisisdumb.py
+*.py
